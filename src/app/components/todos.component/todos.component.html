@@ -1,0 +1,12 @@
+<div class="container">
+    <h1 class="text-center">Todo List</h1>
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+    @if (todos.length === 0) {
+        <p>No todos to display</p>
+    } 
+    @else {
+        @for (todo of todos; let ind = $index; track $index) {
+            <app-todo-item [todo]="todo" (todoDelete)="deleteTodo(ind)" (todoUpdate)="updateTodo(ind)"></app-todo-item>
+        }
+    }
+</div>
